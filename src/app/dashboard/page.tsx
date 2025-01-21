@@ -13,6 +13,7 @@ import Checkbox from '@/components/ui/Checkbox';
 import KeyTakeawaysModal from '@/components/KeyTakeawaysModal';
 import Logo from '@/components/Logo';
 import type { ChatDocument } from '@/lib/types/chat';
+import Link from 'next/link';
 
 const motivationalQuotes = [
     "What's the big question today?",
@@ -285,14 +286,18 @@ export default function Dashboard() {
                                             </motion.button>
                                         </div>
                                     </div>
-                                    <button
+                                    <Link
+                                        href={`/chat/${doc.id}`}
                                         onClick={(e) => {
+                                            if (loadingChat === doc.id) {
+                                                e.preventDefault();
+                                                return;
+                                            }
                                             e.preventDefault();
                                             handleOpenChat(doc.id);
                                         }}
-                                        disabled={loadingChat === doc.id}
-                                        className={`mt-4 block w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-md hover:shadow-lg transition-all ${
-                                            loadingChat === doc.id ? 'opacity-50 cursor-not-allowed' : ''
+                                        className={`mt-4 block w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-md hover:shadow-lg transition-all text-center ${
+                                            loadingChat === doc.id ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''
                                         }`}
                                     >
                                         {loadingChat === doc.id ? (
@@ -303,7 +308,7 @@ export default function Dashboard() {
                                         ) : (
                                             'Open Chat'
                                         )}
-                                    </button>
+                                    </Link>
                                 </motion.div>
                             ))}
                         </motion.div>
