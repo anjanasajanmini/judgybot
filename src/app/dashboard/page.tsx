@@ -90,7 +90,8 @@ export default function Dashboard() {
 
         const docsToDelete = documents.filter(doc => selectedDocs.has(doc.id));
         
-        setDocumentToDelete({
+        // Create a complete ChatDocument object
+        const bulkDeleteDoc: ChatDocument = {
             id: Array.from(selectedDocs).join(','),
             title: `${docsToDelete.length} documents`,
             createdAt: Date.now(),
@@ -98,8 +99,9 @@ export default function Dashboard() {
             messages: [],
             userId: user?.uid || '',
             keyTakeaways: ''
-        });
+        };
         
+        setDocumentToDelete(bulkDeleteDoc);
         setDeleteModalOpen(true);
     };
 
