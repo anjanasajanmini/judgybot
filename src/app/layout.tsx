@@ -4,6 +4,9 @@ import { AuthProvider } from '@/lib/contexts/AuthContext';
 import { ThemeProvider } from '@/lib/contexts/ThemeContext';
 import Navigation from '@/components/Navigation';
 import { inter } from '@/lib/fonts';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'JudgyBot - Your Personal Judgment Zone',
