@@ -115,13 +115,13 @@ export default function ChatPage({ params }: { params: { id: string } }) {
                 { role: 'system', content: 'You are creating a natural summary of the conversation.' },
                 { role: 'user', content: aiResponses.join('\n\n') },
                 takeawaysPrompt
-            ], tone); // Use the same tone as the conversation
+            ], tone);
 
             return generatedTakeaways
                 .split('\n')
-                .map(line => line.trim())
-                .filter(line => line.length > 0)
-                .map(line => line.startsWith('-') ? line : `- ${line}`)
+                .map((line: string) => line.trim())
+                .filter((line: string) => line.length > 0)
+                .map((line: string) => line.startsWith('-') ? line : `- ${line}`)
                 .join('\n');
         } catch (error) {
             console.error('Error in generateKeyTakeaways:', error);
