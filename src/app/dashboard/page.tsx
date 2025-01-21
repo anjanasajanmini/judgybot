@@ -12,16 +12,7 @@ import DeleteConfirmModal from '@/components/DeleteConfirmModal';
 import Checkbox from '@/components/ui/Checkbox';
 import KeyTakeawaysModal from '@/components/KeyTakeawaysModal';
 import Logo from '@/components/Logo';
-
-interface Document {
-    id: string;
-    title: string;
-    createdAt: number;
-    keyTakeaways?: string;
-    messages: Array<{ role: string; content: string }>;
-    updatedAt: number;
-    userId: string;
-}
+import type { ChatDocument } from '@/lib/types/chat';
 
 const motivationalQuotes = [
     "What's the big question today?",
@@ -33,14 +24,14 @@ const motivationalQuotes = [
 export default function Dashboard() {
     const { user, loading: authLoading } = useAuth();
     const router = useRouter();
-    const [documents, setDocuments] = useState<Document[]>([]);
+    const [documents, setDocuments] = useState<ChatDocument[]>([]);
     const [quote, setQuote] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-    const [documentToDelete, setDocumentToDelete] = useState<Document | null>(null);
+    const [documentToDelete, setDocumentToDelete] = useState<ChatDocument | null>(null);
     const [selectedDocs, setSelectedDocs] = useState<Set<string>>(new Set());
     const [showTakeaways, setShowTakeaways] = useState(false);
-    const [selectedDoc, setSelectedDoc] = useState<Document | null>(null);
+    const [selectedDoc, setSelectedDoc] = useState<ChatDocument | null>(null);
     const [loadingChat, setLoadingChat] = useState<string | null>(null);
 
     useEffect(() => {
@@ -98,13 +89,17 @@ export default function Dashboard() {
         if (selectedDocs.size === 0) return;
 
         const docsToDelete = documents.filter(doc => selectedDocs.has(doc.id));
-        const docTitles = docsToDelete.map(doc => doc.title).join('", "');
         
-        setDocumentToDelete({ 
-            id: Array.from(selectedDocs).join(','), 
-            title: `${docsToDelete.length} documents`, 
-            createdAt: Date.now() 
+        setDocumentToDelete({
+            id: Array.from(selectedDocs).join(','),
+            title: `${docsToDelete.length} documents`,
+            createdAt: Date.now(),
+            updatedAt: Date.now(),
+            messages: [],
+            userId: user?.uid || '',
+            keyTakeaways: ''
         });
+        
         setDeleteModalOpen(true);
     };
 
@@ -134,12 +129,12 @@ export default function Dashboard() {
         }
     };
 
-    const handleSingleDelete = (doc: Document) => {
+    const handleSingleDelete = (doc: ChatDocument) => {
         setDocumentToDelete(doc);
         setDeleteModalOpen(true);
     };
 
-    const handleFileClick = (doc: Document) => {
+    const handleFileClick = (doc: ChatDocument) => {
         setSelectedDoc(doc);
         setShowTakeaways(true);
     };
