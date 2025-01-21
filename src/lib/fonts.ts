@@ -6,4 +6,4 @@ export const righteous = Righteous({
     weight: '400',
     subsets: ['latin'],
     display: 'swap',
-}); 
+});
