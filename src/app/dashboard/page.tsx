@@ -285,8 +285,7 @@ export default function Dashboard() {
                                             </motion.button>
                                         </div>
                                     </div>
-                                    <a
-                                        href={`/chat/${doc.id}`}
+                                    <button
                                         onClick={(e) => {
                                             e.preventDefault();
                                             handleOpenChat(doc.id);
@@ -304,7 +303,7 @@ export default function Dashboard() {
                                         ) : (
                                             'Open Chat'
                                         )}
-                                    </a>
+                                    </button>
                                 </motion.div>
                             ))}
                         </motion.div>
