@@ -66,7 +66,7 @@ export default function SignUpModal({ isOpen, onClose, mode = 'signup' }: SignUp
                                 onClick={onClose} 
                                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
                             >
-                                <X size={20} />
+                                <X size={20} className="text-gray-500" />
                             </button>
                         </div>
 
@@ -79,7 +79,7 @@ export default function SignUpModal({ isOpen, onClose, mode = 'signup' }: SignUp
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                    className="w-full px-4 py-2 bg-white text-gray-900 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                                     required
                                 />
                             </div>
@@ -91,7 +91,7 @@ export default function SignUpModal({ isOpen, onClose, mode = 'signup' }: SignUp
                                     type="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                    className="w-full px-4 py-2 bg-white text-gray-900 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                                     required
                                     minLength={6}
                                 />

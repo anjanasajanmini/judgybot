@@ -22,7 +22,7 @@ export default function ChatMessages({ messages }: ChatMessagesProps) {
                         className={`max-w-[80%] rounded-2xl p-4 ${
                             message.role === 'user'
                                 ? 'bg-indigo-600 text-white ml-12'
-                                : 'bg-white/80 backdrop-blur-sm border border-purple-100 mr-12'
+                                : 'bg-white/80 backdrop-blur-sm border border-purple-100 text-gray-900 mr-12'
                         }`}
                     >
                         <ReactMarkdown className="prose prose-sm max-w-none">

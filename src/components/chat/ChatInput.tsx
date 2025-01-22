@@ -34,7 +34,7 @@ export default function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={handleKeyPress}
                 placeholder="Type your message... (Press Enter to send)"
-                className="w-full p-4 pr-12 rounded-lg border border-gray-200 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 resize-none bg-white/80 backdrop-blur-sm"
+                className="w-full p-4 pr-12 rounded-lg border border-gray-200 focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 resize-none bg-white/80 backdrop-blur-sm text-gray-900 placeholder-gray-500"
                 rows={3}
                 disabled={disabled}
             />
