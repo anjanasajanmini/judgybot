@@ -9,7 +9,7 @@ export default function GoogleSignInButton() {
     return (
         <button
             onClick={signInWithGoogle}
-            className="flex items-center gap-2 px-6 py-3 bg-white text-gray-800 rounded-lg shadow hover:shadow-md transition-all border"
+            className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-lg shadow hover:shadow-md transition-all border dark:border-gray-700"
         >
             <Image
                 src="/google.svg"

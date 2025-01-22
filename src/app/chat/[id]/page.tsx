@@ -199,7 +199,7 @@ export default function ChatPage({ params }: { params: { id: string } }) {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+        <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
             <DocumentHeader 
                 title={title} 
                 setTitle={setTitle}
